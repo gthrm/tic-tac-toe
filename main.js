@@ -1,4 +1,4 @@
-const x = `<svg 
+const x = `<svg id="X"
 xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink"
 width="88px" height="88px">
@@ -6,9 +6,7 @@ width="88px" height="88px">
 d="M77.536,70.464 L70.464,77.536 L41.500,48.571 L12.536,77.536 L5.464,70.464 L34.429,41.500 L5.464,12.536 L12.536,5.464 L41.500,34.429 L70.464,5.464 L77.536,12.536 L48.571,41.500 L77.536,70.464 Z"></path>
 </svg>`;
 
-const newX = x.toString().replace(/\r|\n/g, '');
-
-const o = `<svg 
+const o = `<svg id="O"
 xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink"
 width="78px" height="78px">
@@ -16,44 +14,235 @@ width="78px" height="78px">
 d="M36.500,5.000 C53.897,5.000 68.000,19.103 68.000,36.500 C68.000,53.897 53.897,68.000 36.500,68.000 C19.103,68.000 5.000,53.897 5.000,36.500 C5.000,19.103 19.103,5.000 36.500,5.000 Z"></path>
 </svg>`;
 
-const newO = o.toString().replace(/\r|\n/g, '');
+let game;
+let randGlob;
 
-var num = 0;
+function userGo(data) {
+  console.log('data ', data);
+  console.log('innerHTML ', data.innerHTML);
+  console.log('Пусто? ', data.innerHTML == '');
+  console.log('ID ', data.id);
+  if (data.innerHTML == '') {
+    data.innerHTML = x;
+    game[data.id] = 1;
+    setTimeout(() => {
+      checkGo('user');
+    }, 300);
+    return false;
+  } else {
+    console.log('Клетка занята');
+  };
+};
 
-function check() {
+//Бот
+function botGo() {
+  console.log('botGo');
+  
+  if (game[0] == game[1] && document.getElementById(2).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 1, ставь в 2');
+    getNull(2);
+    return false;    
+  } if (game[1] == game[2] && document.getElementById(0).innerHTML == '' && game[1] != undefined) {
+    console.log('1 = 2, ставь в 0');
+    getNull(0);
+    return false;
+  } if (game[3] == game[4] && document.getElementById(5).innerHTML == '' && game[3] != undefined) {
+    console.log('3 = 4, ставь в 5');
+    getNull(5);
+    return false;
+  } if (game[4] == game[5] && document.getElementById(3).innerHTML == '' && game[4] != undefined) {
+    console.log('4 = 5, ставь в 3');
+    getNull(3);
+    return false;
+  } if (game[6] == game[7] && document.getElementById(8).innerHTML == '' && game[6] != undefined) {
+    console.log('6 = 7, ставь в 8');
+    getNull(8);
+    return false;
+  } if (game[7] == game[8] && document.getElementById(6).innerHTML == '' && game[7] != undefined) {
+    console.log('7 = 8, ставь в 6');
+    getNull(6);
+    return false;
+  } if (game[0] == game[3] && document.getElementById(6).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 3, ставь в 6');
+    getNull(6);
+    return false;
+  } if (game[3] == game[6] && document.getElementById(0).innerHTML == '' && game[3] != undefined) {
+    console.log('3 = 6, ставь в 0');
+    getNull(0);
+    return false;
+  } if (game[1] == game[4] && document.getElementById(7).innerHTML == '' && game[1] != undefined) {
+    console.log('1 = 4, ставь в 7');
+    getNull(7);
+    return false;
+  } if (game[4] == game[7] && document.getElementById(1).innerHTML == '' && game[4] != undefined) {
+    console.log('4 = 7, ставь в 1');
+    getNull(1);
+    return false;
+  } if (game[2] == game[5] && document.getElementById(8).innerHTML == '' && game[2] != undefined) {
+    console.log('2 = 5, ставь в 8');
+    getNull(8);
+    return false;
+  } if (game[5] == game[8] && document.getElementById(2).innerHTML == '' && game[5] != undefined) {
+    console.log('5 = 8, ставь в 2');
+    getNull(2);
+    return false;
+  } if (game[0] == game[4] && document.getElementById(8).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 4, ставь в 8');
+    getNull(8);
+    return false;
+  } if (game[4] == game[8] && document.getElementById(0).innerHTML == '' && game[4] != undefined) {
+    console.log('4 = 8, ставь в 0');
+    getNull(0);
+    return false;
+  } if (game[2] == game[4] && document.getElementById(6).innerHTML == '' && game[2] != undefined) {
+    console.log('2 = 4, ставь в 6');
+    getNull(6);
+    return false;
+  } if (game[4] == game[6] && document.getElementById(2).innerHTML == '' && game[4] != undefined) {
+    console.log('4 = 6, ставь в 2');
+    getNull(2);
+    return false;
+  } if (game[0] == game[6] && document.getElementById(3).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 6, ставь в 3');
+    getNull(3);
+    return false;
+  } if (game[1] == game[7] && document.getElementById(4).innerHTML == '' && game[1] != undefined) {
+    console.log('1 = 7, ставь в 4');
+    getNull(4);
+    return false;
+  } if (game[2] == game[8] && document.getElementById(5).innerHTML == '' && game[2] != undefined) {
+    console.log('2 = 8, ставь в 5');
+    getNull(5);
+    return false;
+  } if (game[0] == game[2] && document.getElementById(1).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 2, ставь в 1');
+    getNull(1);
+    return false;
+  } if (game[3] == game[5] && document.getElementById(4).innerHTML == '' && game[3] != undefined) {
+    console.log('3 = 5, ставь в 4');
+    getNull(4);
+    return false;
+  } if (game[6] == game[8] && document.getElementById(7).innerHTML == '' && game[6] != undefined) {
+    console.log('6 = 8, ставь в 7');
+    getNull(7);
+    return false;
+  } if (game[0] == game[8] && document.getElementById(4).innerHTML == '' && game[0] != undefined) {
+    console.log('0 = 8, ставь в 4');
+    getNull(4);
+    return false;
+  } if (game[2] == game[6] && document.getElementById(4).innerHTML == '' && game[2] != undefined) {
+    console.log('0 = 8, ставь в 4');
+    getNull(4);
+    return false;
+  } else {
+    random();
+    return false;
+  };
+  
+  function random() {
+    console.log('********** Рандомный **********');
+    var rand = 0.5 + Math.random() * 9;
+    rand = Math.round(rand);
+    if (document.getElementById(rand-1).innerHTML == '') {
+      getNull(rand-1);
+      return false;
+    } else {
+      random();
+      return false;
+    }
     
-    var boxes = document.getElementsByClassName('box');
-    console.log(boxes[0].innerHTML.toString().replace(/\r|\n/g, '') == newO);
+  };
+  
+  function getNull(data) {
+    let elem = document.getElementById(data);
+    console.log('Элемент, куда бот должен поставить ', data);
+      elem.innerHTML = o;
+      game[data] = 2;
+      setTimeout(() => {
+        checkGo('bot');
+      }, 300);
+  };
+};
 
-    console.log(boxes[0].innerHTML.toString().replace(/\r|\n/g, ''));
-    console.log(newO);
+function checkGo(user) {
+  console.log('checkGo user: ', user);
+  console.log('game ', game);
+  if (game[0] == 1 && game[1] == 1 && game[2] == 1) {
+        win(1);
+      } if (game[3] == 1 && game[4] == 1 && game[5] == 1) {
+        win(1);
+      } if(game[6] == 1 && game[7] == 1 && game[8] == 1) {
+        win(1);
+      } if (game[0] == 1 && game[3] == 1 && game[6] == 1) {
+        win(1);
+      } if (game[1] == 1 && game[4] == 1 && game[7] == 1) {
+        win(1);
+      } if (game[2] == 1 && game[5] == 1 && game[8] == 1) {
+        win(1);
+      } if (game[0] == 1 && game[4] == 1 && game[8] == 1) {
+        win(1);
+      } if (game[2] == 1 && game[4] == 1 && game[6] == 1) {
+        win(1);
+      } if (game[0] == 2 && game[1] == 2 && game[2] == 2) {
+        win(2);
+      } if (game[3] == 2 && game[4] == 2 && game[5] == 2) {
+        win(2);
+      } if(game[6] == 2 && game[7] == 2 && game[8] == 2) {
+        win(2);
+      } if (game[0] == 2 && game[3] == 2 && game[6] == 2) {
+        win(2);
+      } if (game[1] == 2 && game[4] == 2 && game[7] == 2) {
+        win(2);
+      } if (game[2] == 2 && game[5] == 2 && game[8] == 2) {
+        win(2);
+      } if (game[0] == 2 && game[4] == 2 && game[8] == 2) {
+        win(2);
+      } if (game[2] == 2 && game[4] == 2 && game[6] == 2) {
+        win(2);
+      } if (game[0] != undefined && game[1] != undefined && game[2] != undefined && game[3] != undefined && game[4] != undefined && game[5] != undefined && game[6] != undefined && game[7] != undefined && game[8] != undefined) {
+        win(3);
+      } else {
+        if (user == 'user') {
+          botGo();
+          return false;
+        } if (user == 'bot') {
+          console.log('Ходи');;
+          return false;
+        } else {
+          console.log('какая-то херня');
+          return false;
+        }
+      };
+};
 
-    console.log('чек');
-    if (boxes[0].innerHTML.toString().replace(/^\s+/&&/\r?\n/g, "") == X && boxes[1].innerHTML.toString().replace(/^\s+/&&/\r?\n/g, "") == X && boxes[2].innerHTML.toString().replace(/^\s+/&&/\r?\n/g, "") == X) {
-        alert ("выйграли!");
-    };
-      
+function win(data) {
+  console.log('win data ', data);
+  if (data == 1) {
+    alert ('Ты выйграл!');
+    location.reload();
+  } if (data == 2) {
+    alert ('Лох-Пидр!');
+    location.reload();
+  } if (data == 3) {
+    alert ('Ничья!');
+    location.reload();
+  } else {
+    console.log(data, ' что это?');
+    return false;
+  }
 }
 
 window.onload = function() {
-    for (var i = 0; i<9; i++) {
-        document.getElementById('game').innerHTML+='<div class="box"></div>';
-    };
-
-    document.getElementById('game').onclick = function(event) {
-        if (event.target.className == 'box') {
-            if (num % 2 == 0) {
-                event.target.innerHTML = o;
-            } else {
-                event.target.innerHTML = x;
-            }
-            num ++;
-            check();
-            
-        }
-        else false;
-
-    };
-    
-}
-
+  let GameElem = document.getElementById('game');
+  game = new Array(9);
+  console.log(game);
+  for (let i = 0; i < game.length; i++) {
+    GameElem.innerHTML += `<div class="box" id="${i}"></div>`;
+  };
+  
+  GameElem.onclick = function (event) {
+    console.log('event ',event);
+    console.log('event.target ', event.target);
+    userGo(event.target);
+  };
+};
