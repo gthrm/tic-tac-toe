@@ -4,6 +4,8 @@ var x = '<svg id=""\nxmlns="http://www.w3.org/2000/svg"\nxmlns:xlink="http://www
 
 var o = '<svg id=""\nxmlns="http://www.w3.org/2000/svg"\nxmlns:xlink="http://www.w3.org/1999/xlink"\nwidth="78px" height="78px">\n<path fill-rule="evenodd"  stroke="rgb(255, 252, 252)" stroke-width="10px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"\nd="M36.500,5.000 C53.897,5.000 68.000,19.103 68.000,36.500 C68.000,53.897 53.897,68.000 36.500,68.000 C19.103,68.000 5.000,53.897 5.000,36.500 C5.000,19.103 19.103,5.000 36.500,5.000 Z"></path>\n</svg>';
 
+var siteWeb = 'http://188.225.35.65:8081/info';
+
 var userHod = '<h1 class="headText"> Твой ход </h1>';
 var botHod = '<h1 class="headText"> Ходит бот </h1>';
 
@@ -362,6 +364,36 @@ function win(data) {
 function remove() {
   if (this.parentNode) {
     this.parentNode.removeChild(this);
+  };
+};
+
+function createInfo(type, num) {
+  var req = new XMLHttpRequest();
+  var body = {
+    type: type,
+    num: num
+  };
+
+  req.open('POST', siteWeb, false);
+  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  req.send(body);
+  if (req.status != 200) {
+    console.log(req.status + ': ' + req.statusText);
+  } else {
+    console.log(req.responseText);
+  };
+};
+
+function getInfo() {
+  var req = new XMLHttpRequest();
+
+  req.open('GET', siteWeb, false);
+  // req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  req.send();
+  if (req.status != 200) {
+    console.log(req.status + ': ' + req.statusText);
+  } else {
+    console.log(req.responseText);
   };
 };
 
