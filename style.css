@@ -47,7 +47,7 @@ svg {
 #head {
   position: absolute;
   width: 300px;
-  top: 10%;
+  top: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,18 +115,7 @@ svg {
   left: 0;
 }
 
-@keyframes  load {
 
-	0%
-	{
-		background-color: rgba(73, 160, 235, 1);
-	}
-	to
-	{
-		background-color: rgba(73, 160, 235, 0);
-	}
-
-}
 
 @keyframes  play_top {
 
@@ -160,4 +149,10 @@ svg {
 		box-shadow: 0 0 0 20px rgba(55,55,55,0);
 	}
 
+}
+
+@media (min-width:320px) and (max-width:1023px){
+  #head {
+    top: 10px;
+  }
 }
