@@ -265,38 +265,55 @@ function checkGo(user) {
   console.log('game ', game);
   if (game[0] == 1 && game[1] == 1 && game[2] == 1) {
     win(1);
+    return false;
   }if (game[3] == 1 && game[4] == 1 && game[5] == 1) {
     win(1);
+    return false;
   }if (game[6] == 1 && game[7] == 1 && game[8] == 1) {
     win(1);
+    return false;
   }if (game[0] == 1 && game[3] == 1 && game[6] == 1) {
     win(1);
+    return false;
   }if (game[1] == 1 && game[4] == 1 && game[7] == 1) {
     win(1);
+    return false;
   }if (game[2] == 1 && game[5] == 1 && game[8] == 1) {
     win(1);
+    return false;
   }if (game[0] == 1 && game[4] == 1 && game[8] == 1) {
     win(1);
+    return false;
   }if (game[2] == 1 && game[4] == 1 && game[6] == 1) {
     win(1);
+    return false;
   }if (game[0] == 2 && game[1] == 2 && game[2] == 2) {
     win(2);
+    return false;
   }if (game[3] == 2 && game[4] == 2 && game[5] == 2) {
     win(2);
+    return false;
   }if (game[6] == 2 && game[7] == 2 && game[8] == 2) {
     win(2);
+    return false;
   }if (game[0] == 2 && game[3] == 2 && game[6] == 2) {
     win(2);
+    return false;
   }if (game[1] == 2 && game[4] == 2 && game[7] == 2) {
     win(2);
+    return false;
   }if (game[2] == 2 && game[5] == 2 && game[8] == 2) {
     win(2);
+    return false;
   }if (game[0] == 2 && game[4] == 2 && game[8] == 2) {
     win(2);
+    return false;
   }if (game[2] == 2 && game[4] == 2 && game[6] == 2) {
     win(2);
+    return false;
   }if (game[0] != undefined && game[1] != undefined && game[2] != undefined && game[3] != undefined && game[4] != undefined && game[5] != undefined && game[6] != undefined && game[7] != undefined && game[8] != undefined) {
     win(3);
+    return false;
   } else {
     if (user == 'user') {
       console.log('head ', head);
@@ -321,12 +338,15 @@ function win(data) {
   if (data == 1) {
     alert('Ты выйграл!');
     location.reload();
+    return false;
   }if (data == 2) {
     alert('Лох-Пидр!');
     location.reload();
+    return false;
   }if (data == 3) {
     alert('Ничья!');
     location.reload();
+    return false;
   } else {
     console.log(data, ' что это?');
     return false;
