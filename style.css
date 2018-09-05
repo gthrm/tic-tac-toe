@@ -34,10 +34,20 @@ svg {
   z-index: 999;
 }
 
+#head {
+  position: absolute;
+  width: 300px;
+  top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .headText {
+  text-transform: uppercase;
   margin: 5px;
   font-size: 40px;
-  color: black;
+  color: #333333;
   text-align: center;
 }
 
@@ -53,14 +63,12 @@ svg {
     position: absolute;
     display: flex;
     border-radius: 50%;
-    border: 5px solid rgba(240, 50 ,33 , 0.7);
+    border: 10px solid rgba(240, 50 ,33 , 0.7);
     margin: 75px;
     width: 150px;
     height: 150px;
     padding: 20px 0;
     text-transform: uppercase;
-    font-size: 16px;
-    font-weight: bold;
     justify-content: center;
     align-items: center;
     background: rgba(255, 255 ,255 , 0.2);
@@ -73,8 +81,10 @@ svg {
     cursor: pointer;
 }
 
-#button h1 {
+#click {
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 @keyframes  play_top {

@@ -14,6 +14,9 @@ width="78px" height="78px">
 d="M36.500,5.000 C53.897,5.000 68.000,19.103 68.000,36.500 C68.000,53.897 53.897,68.000 36.500,68.000 C19.103,68.000 5.000,53.897 5.000,36.500 C5.000,19.103 19.103,5.000 36.500,5.000 Z"></path>
 </svg>`;
 
+const userHod = '<h1 class="headText"> Твой ход </h1>';
+const botHod = '<h1 class="headText"> Ходит бот </h1>';
+
 let game;
 let randGlob;
 let head;
@@ -305,13 +308,13 @@ function checkGo(user) {
       } else {
         if (user == 'user') {
           console.log('head ', head);
-          head.innerHTML = '<h1 class="headText"> Ходит Бот </h1>';
+          document.getElementById('head').innerHTML = botHod;
           botGo();
           return false;
         } if (user == 'bot') {
           console.log('Ходи');
           console.log('head ', head);
-          head.innerHTML = '<h1 class="headText"> Ходит Игрок </h1>';
+          document.getElementById('head').innerHTML = userHod;
           return false;
         } else {
           console.log('какая-то херня');
@@ -346,14 +349,14 @@ function remove() {
 window.onload = function() {
   head = document.getElementById('head');
   // head.innerHTML = '<h1 class="headText"> Ходит Игрок </h1>';
-  console.log('Из onload ', head);
+  // console.log('Из onload ', head);
   let GameElem = document.getElementById('game');
   game = new Array(9);
   console.log(game);
   for (let i = 0; i < game.length; i++) {
     GameElem.innerHTML += `<div class="box" id="${i}"></div>`;
   };
-  GameElem.innerHTML += '<div id="button"><h1>Нажми в клетку, чтобы начать</h1></div>';
+  GameElem.innerHTML += '<div id="button"><h1 id="click">Start</h1></div>';
   document.getElementById('root').innerHTML += '<div id="start"></div>';
 
   document.getElementById('game').onclick = function (event) {
@@ -363,7 +366,7 @@ window.onload = function() {
   };
 
   document.getElementById('button').onclick = function () {
-    document.getElementById('head').innerHTML = '<h1 class="headText"> Ходит Игрок </h1>';
+    document.getElementById('head').innerHTML = userHod;
     document.getElementById('button').remove();
     document.getElementById('start').remove();
   };
