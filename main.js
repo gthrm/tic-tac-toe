@@ -12,6 +12,7 @@ var randGlob = void 0;
 var head = void 0;
 
 function userGo(data) {
+  console.log('wait - display: none');
   console.log('data ', data);
   console.log('innerHTML ', data.innerHTML);
   console.log('Пусто? ', data.innerHTML == '');
@@ -298,6 +299,7 @@ function checkGo(user) {
   }if (game[0] != undefined && game[1] != undefined && game[2] != undefined && game[3] != undefined && game[4] != undefined && game[5] != undefined && game[6] != undefined && game[7] != undefined && game[8] != undefined) {
     win(3);
   } else {
+    document.getElementById('wait').style = "display: none";
     if (user == 'user') {
       console.log('head ', head);
       document.getElementById('head').innerHTML = botHod;
@@ -352,6 +354,7 @@ window.onload = function () {
   document.getElementById('body').innerHTML += '<div id="start"></div>';
 
   document.getElementById('game').onclick = function (event) {
+    document.getElementById('wait').style = "display: inherit";
     console.log('event ', event);
     console.log('event.target ', event.target);
     userGo(event.target);
